@@ -2,7 +2,8 @@ import React from "react";
 import CharacterCard from "./CharacterCard";
 
 const CharactersList = (props) => {
-  const characterList = props.Characters.map((character) => {
+  console.log(props);
+  const characterList = props.characters.map((character) => {
     return (
       <li className="character-item" key={character.id}>
         <CharacterCard
