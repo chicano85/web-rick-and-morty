@@ -2,8 +2,6 @@ import React from "react";
 import CharacterCard from "./CharacterCard";
 
 const CharactersList = (props) => {
-  // pasar el código a JSX
-  // pasar props a CharacterCard
   const characterList = props.Characters.map((character) => {
     return (
       <li className="character-item" key={character.id}>
