@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from "react";
+import { Route, Switch } from "react-router-dom";
 import "../App.css";
 import logo from "../images/logo-rick-morty.png";
 import CharactersList from "./CharactersList";
 import getDataFromApi from "../services/api";
 import Filter from "./Filter";
+import { Link } from "react-router-dom";
+import CharacterDetail from "./CharacterDetail";
 
 const App = () => {
   const [characters, setCharacters] = useState([]);
   const [filterName, setFilterName] = useState("");
 
   // save API data in a state
+
   useEffect(() => {
     getDataFromApi().then((data) => {
       setCharacters(data);
@@ -18,7 +22,7 @@ const App = () => {
 
   // filter the characters to be painted
 
-  const renderFilteredCharacters = () => {
+  const renderCharacters = () => {
     let results = characters.filter((character) => {
       return character.name.toUpperCase().includes(filterName.toUpperCase());
     });
@@ -31,15 +35,48 @@ const App = () => {
     setFilterName(data.value);
   };
 
+  const renderDetails = (props) => {
+    const RouteId = props.match.params.id;
+    const character = characters.find(
+      (character) => character.id === parseInt(RouteId)
+    );
+    return (
+      <>
+        <Link to="/">
+          <div className="back-button">
+            <p>Back</p>
+          </div>
+        </Link>
+
+        <CharacterDetail
+          id={character.id}
+          image={character.image}
+          name={character.name}
+          status={character.status}
+          species={character.species}
+          gender={character.gender}
+          origin={character.origin.name}
+          episode={character.episode}
+        />
+      </>
+    );
+  };
+
   return (
     <div className="App">
-      <img src={logo} alt="Rick and Morty logo" />
-
-      <Filter filterName={filterName} handleFilter={handleFilterName} />
-      <CharactersList
-        characters={renderFilteredCharacters()}
-        filter={filterName}
+      <img
+        src={logo}
+        alt="Rick and Morty logo"
+        className="logo"
+        title="Rick and Morty logo"
       />
+      <Switch>
+        <Route exact path="/">
+          <Filter filterName={filterName} handleFilter={handleFilterName} />
+          <CharactersList characters={renderCharacters()} filter={filterName} />
+        </Route>
+        <Route path="/character/:id" render={renderDetails}></Route>
+      </Switch>
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import React from "react";
 
 const Filter = (props) => {
-  //pasar el valor del input al estado
+  // move the inpute value to the state
 
   const handleFilterName = (ev) => {
     props.handleFilter({
@@ -12,13 +12,13 @@ const Filter = (props) => {
 
   return (
     <form
-      onSubmit={(event) => {
-        event.preventDefault();
+      onSubmit={(ev) => {
+        ev.preventDefault();
       }}
     >
       <div className="input-search">
-        <label htmlFor="filterName">
-          <b>Search character</b>
+        <label htmlFor="filterName" class="label">
+          Search character
         </label>
         <input
           type="text"
