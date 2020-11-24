@@ -44,17 +44,20 @@ const App = () => {
             <p>Back</p>
           </div>
         </Link>
-
-        <CharacterDetail
-          id={character.id}
-          image={character.image}
-          name={character.name}
-          status={character.status}
-          species={character.species}
-          gender={character.gender}
-          origin={character.origin.name}
-          episode={character.episode}
-        />
+        {character ? (
+          <CharacterDetail
+            id={character.id}
+            image={character.image}
+            name={character.name}
+            status={character.status}
+            species={character.species}
+            gender={character.gender}
+            origin={character.origin.name}
+            episode={character.episode}
+          />
+        ) : (
+          <p>The character you're looking for doesn't exist</p>
+        )}
       </>
     );
   };

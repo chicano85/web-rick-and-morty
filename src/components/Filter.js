@@ -17,7 +17,7 @@ const Filter = (props) => {
       }}
     >
       <div className="input-search">
-        <label htmlFor="filterName" class="label">
+        <label htmlFor="filterName" className="label">
           Search character
         </label>
         <input

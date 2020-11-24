@@ -3,9 +3,9 @@ import React from "react";
 const CharacterDetail = (props) => {
   return (
     <div>
-      <section className="card-details character-details">
+      <section className="character-details character">
         <img src={props.image} alt={props.name} />
-        <div>
+        <div className="card-details-text">
           <h2>{props.name}</h2>
           <ul>
             <li>Status: {props.status}</li>

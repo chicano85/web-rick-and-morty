@@ -1,7 +1,7 @@
 * {
   margin: 0;
   padding: 0;
-  list-style-type: 0;
+  list-style: none;
   text-decoration: none;
 }
 .App {
@@ -17,17 +17,11 @@ body {
   heigh: 450px;
 }
 
-.back-button {
-  color: white;
-  font-size: 20px;
-  padding: 20px;
-}
-
 .character-list {
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  flex-direction: row;
 }
 
 .character {
@@ -48,17 +42,36 @@ body {
   margin-right: 10px;
 }
 
-.input-search {
-  border-color: red solid 2px;
+.character img {
+  width: 220px;
 }
 
-.card-details {
+.input-search {
+  color: white;
+  background-color: #33b5cf;
+  margin: auto;
+  border-radius: 6px;
+  padding: 5px;
+  width: 200px;
+}
+
+.input-search:hover {
+  box-shadow: 0 0 10px #b5bfe0;
+}
+.character-details {
   display: flex;
   justify-content: space-between;
-  margin: 20px;
-  border: rgb(7, 121, 102) solid 2px;
-  border-radius: 6px;
-  background-color: rgb(21, 189, 161);
-  width: 550px;
+  width: 400px;
+  margin: 20px auto;
   height: 250px;
+}
+
+.card-details-text {
+  padding: 20px;
+  margin: 20px;
+}
+.back-button {
+  color: white;
+  font-size: 20px;
+  background-color: #33b5cf;
 }
