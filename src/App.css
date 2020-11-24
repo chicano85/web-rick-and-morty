@@ -16,3 +16,49 @@ body {
   width: 500px;
   heigh: 450px;
 }
+
+.back-button {
+  color: white;
+  font-size: 20px;
+  padding: 20px;
+}
+
+.character-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.character {
+  color: white;
+  padding: 10px;
+  margin: 10px;
+  border: orange solid 2px;
+  border-radius: 6px;
+  background-color: rgb(233, 204, 76);
+  transition: 1.5s;
+}
+.character:hover {
+  background-color: rgb(227, 243, 8);
+  color: black;
+}
+
+.label {
+  margin-right: 10px;
+}
+
+.input-search {
+  border-color: red solid 2px;
+}
+
+.card-details {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px;
+  border: rgb(7, 121, 102) solid 2px;
+  border-radius: 6px;
+  background-color: rgb(21, 189, 161);
+  width: 550px;
+  height: 250px;
+}

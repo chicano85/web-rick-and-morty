@@ -20,20 +20,17 @@ const App = () => {
     });
   });
 
-  // filter the characters to be painted
-
-  const renderCharacters = () => {
-    let results = characters.filter((character) => {
-      return character.name.toUpperCase().includes(filterName.toUpperCase());
-    });
-    return results;
-  };
-
   // function to save the filter data in the state
 
   const handleFilterName = (data) => {
     setFilterName(data.value);
   };
+
+  // filter the characters to be painted
+
+  const renderCharacters = characters.filter((character) => {
+    return character.name.toUpperCase().includes(filterName.toUpperCase());
+  });
 
   const renderDetails = (props) => {
     const RouteId = props.match.params.id;
@@ -73,7 +70,7 @@ const App = () => {
       <Switch>
         <Route exact path="/">
           <Filter filterName={filterName} handleFilter={handleFilterName} />
-          <CharactersList characters={renderCharacters()} filter={filterName} />
+          <CharactersList characters={renderCharacters} filter={filterName} />
         </Route>
         <Route path="/character/:id" render={renderDetails}></Route>
       </Switch>
