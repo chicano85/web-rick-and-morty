@@ -32,6 +32,8 @@ const App = () => {
     return character.name.toUpperCase().includes(filterName.toUpperCase());
   });
 
+  // Props to CharacterDetail and comparason between id
+
   const renderDetails = (props) => {
     const RouteId = props.match.params.id;
     const character = characters.find(
