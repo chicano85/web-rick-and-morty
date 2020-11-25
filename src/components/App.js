@@ -22,7 +22,7 @@ const App = () => {
 
   // function to save the filter data in the state
 
-  const handleFilterName = (data) => {
+  const handleFilter = (data) => {
     setFilterName(data.value);
   };
 
@@ -56,7 +56,7 @@ const App = () => {
             episode={character.episode}
           />
         ) : (
-          <p>The character you're looking for doesn't exist</p>
+          <p>El personaje que buscas no existe.</p>
         )}
       </>
     );
@@ -72,7 +72,7 @@ const App = () => {
       />
       <Switch>
         <Route exact path="/">
-          <Filter filterName={filterName} handleFilter={handleFilterName} />
+          <Filter filterName={filterName} handleFilter={handleFilter} />
           <CharactersList characters={renderCharacters} filter={filterName} />
         </Route>
         <Route path="/character/:id" render={renderDetails}></Route>
