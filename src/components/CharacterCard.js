@@ -11,6 +11,7 @@ const CharacterCard = (props) => {
         <img src={props.image} alt={props.name} title={props.name} />
         <h3>{props.name}</h3>
         <p>{props.species}</p>
+        <p>{props.gender}</p>
       </article>
     </Link>
   );

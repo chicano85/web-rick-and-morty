@@ -11,6 +11,7 @@ import CharacterDetail from "./CharacterDetail";
 const App = () => {
   const [characters, setCharacters] = useState([]);
   const [filterName, setFilterName] = useState("");
+  const [filterSelect, setFilterSelect] = useState("");
 
   // save API data in a state
 
@@ -18,18 +19,37 @@ const App = () => {
     getDataFromApi().then((data) => {
       setCharacters(data);
     });
-  });
+  }, []);
 
   // function to save the filter data in the state
 
   const handleFilter = (data) => {
-    setFilterName(data.value);
+    if (data.key === "filterName") {
+      setFilterName(data.value);
+    } else if (data.key === "status") {
+      setFilterSelect(data.value);
+    }
+    console.log(data.value);
   };
 
   // filter the characters to be painted
 
-  const renderCharacters = characters.filter((character) => {
-    return character.name.toUpperCase().includes(filterName.toUpperCase());
+  const renderCharacters = characters
+    .filter((character) => {
+      return character.name.toUpperCase().includes(filterName.toUpperCase());
+    })
+    .filter((character) => {
+      return character.gender.includes(filterSelect);
+    });
+
+  renderCharacters.sort(function (a, b) {
+    if (a.name > b.name) {
+      return 1;
+    }
+    if (a.name < b.name) {
+      return -1;
+    }
+    return 0;
   });
 
   // Props to CharacterDetail and comparason between id
@@ -75,7 +95,7 @@ const App = () => {
       <Switch>
         <Route exact path="/">
           <Filter filterName={filterName} handleFilter={handleFilter} />
-          <CharactersList characters={renderCharacters} filter={filterName} />
+          <CharactersList characters={renderCharacters} />
         </Route>
         <Route path="/character/:id" render={renderDetails}></Route>
       </Switch>

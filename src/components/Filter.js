@@ -5,7 +5,7 @@ const Filter = (props) => {
 
   const handleFilterName = (ev) => {
     props.handleFilter({
-      key: "filterName",
+      key: ev.target.id,
       value: ev.target.value,
     });
   };
@@ -27,6 +27,13 @@ const Filter = (props) => {
           value={props.filterName}
           onChange={handleFilterName}
         />
+        <label htmlFor="status"></label>
+        <select name="status" id="status" onChange={handleFilterName}>
+          <option value="select gender"> Select gender </option>
+          <option value="Female"> female </option>
+          <option value="Male"> male </option>
+          <option value="unknown"> unknown </option>
+        </select>
       </div>
     </form>
   );
